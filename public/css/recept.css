@@ -1,0 +1,173 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar {
+  background-color: #000;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 2rem; 
+  width: 100%;
+  height: 30px;
+}
+
+.navbar-left {
+  font-size: 1.4rem;
+}
+
+.navbar-right a {
+  color: white;
+  margin-left: 1.5rem;
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+h3 {
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+.navigationButtons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.navigationButtons form button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.navigationButtons form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+form input[type="text"],
+form input[type="date"],
+form select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+button.spremi {
+  background-color: #28a745;
+  color: white;
+  padding: 0.6rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  max-width: 100px;
+  align-self: center;
+}
+
+button.obrisi {
+  background-color: #dc3545;
+  color: white;
+  padding: 0.6rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  max-width: 100px;
+}
+
+table {
+  width: 100%;
+  max-width: 600px;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+th, td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+td form {
+  display: inline;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+button {
+  font-size: 1rem;
+}
+
+a button {
+  background-color: #17a2b8;
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.gumb-uredi {
+  background-color: #fd7e14;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-right: 0.5rem;
+  display: inline-block;
+}
+
+.gumb-obrisi {
+  background-color: #dc3545;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-block;
+}

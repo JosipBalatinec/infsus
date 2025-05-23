@@ -1,10 +1,23 @@
 const express = require('express');
 const app = express();
 const receptRoutes = require('./routes/receptRoutes');
+const stavkaRoutes = require('./routes/stavkaRoutes');
+const homeController = require('./controllers/homeController');
 
+const path = require('path');
+
+app.use(express.static('public'));
+
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/recepti', receptRoutes);
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+app.use('/recept', receptRoutes);
+app.use('/stavka', stavkaRoutes);
+
+app.get('/', homeController.showReceptiList);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

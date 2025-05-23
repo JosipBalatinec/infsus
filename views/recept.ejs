@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Recept</title>
+  <link rel="stylesheet" href="/css/recept.css">
+</head>
+
+<body>
+  <div class="navbar">
+  <div class="navbar-left">Apoteka</div>
+  <div class="navbar-right">
+    <a href="/">Recepti</a>
+  </div>
+  </div>
+
+  <div class="navigationButtons">
+    <form method="POST" action="/recept/<%= recept.recept_id %>/prev" >
+      <button type="submit" <%= disablePrev ? "disabled" : "" %>>Prethodni</button>
+    </form>
+
+    <form method="POST" action="/recept/<%= recept.recept_id %>/next">
+      <button type="submit" <%= disableNext ? "disabled" : "" %>>Sljedeći</button>
+    </form>
+  </div>
+
+  <form method="POST" action="/recept/<%= recept.recept_id %>/update">
+    <label>ID recepta:</label>
+    <input type="text" value="<%= recept.recept_id %>" disabled />
+
+    <label>Datum izdavanja:</label>
+    <input type="date" name="datum_izdavanja" value="<%= recept.datum_izdavanja.toLocaleDateString('en-CA') %>"
+    max="<%= new Date().toISOString().split('T')[0] %>" required />
+
+    <label>Pacijent OIB:</label>
+    <select name="pacijent_oib" required>
+      <% pacijenti.forEach(p => { %>
+        <option value="<%= p.pacijent_oib %>" <%= p.pacijent_oib === recept.pacijent_oib ? "selected" : "" %>>
+          <%= p.ime %> <%= p.prezime %> (<%= p.pacijent_oib %>)
+        </option>
+      <% }) %>
+    </select>
+
+    <label>Zaposlenik ID:</label>
+    <select name="zaposlenik_id" required>
+      <% zaposlenici.forEach(z => { %>
+        <option value="<%= z.zaposlenik_id %>" <%= z.zaposlenik_id === recept.zaposlenik_id ? "selected" : "" %>>
+          <%= z.zaposlenik_id %>
+        </option>
+      <% }) %>
+    </select>
+
+    <br/><br/>
+    <button type="submit" class="spremi">Spremi</button>
+  </form>
+
+  <form method="POST" action="/recept/<%= recept.recept_id %>/delete">
+    <button type="submit" class="obrisi" onclick="return confirm('Obrisati stavku?')">Obriši</button>
+  </form>
+
+  <br/>
+
+  <h3>Stavke</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Naziv proizvoda</th>
+        <th>Količina</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (stavke.length === 0) { %>
+        <tr><td colspan="4">Nema stavki za ovaj recept.</td></tr>
+      <% } else { %>
+        <% stavke.forEach(stavka => { %>
+          <tr>
+            <td><%= stavka.stavka_id %></td>
+            <td><%= stavka.naziv %></td>
+            <td><%= stavka.kolicina %></td>
+            <td>
+              <a href="/stavka/<%= stavka.stavka_id %>/edit" class="gumb-uredi">Uredi</a>
+              <form action="/stavka/<%= stavka.stavka_id %>/delete" method="POST">
+                <button type="submit" class="gumb-obrisi" onclick="return confirm('Obrisati stavku?')">Obriši</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      <% } %>
+    </tbody>
+  </table>
+  
+  <br/>
+  <a href="/stavka/new/<%= recept.recept_id %>">
+    <button>Dodaj novu stavku</button>
+  </a>
+
+</body>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Svi recepti</title>
+  <link rel="stylesheet" href="/css/receptiList.css">
+</head>
+
+<body>
+  <div class="navbar">
+  <div class="navbar-left">Apoteka</div>
+  <div class="navbar-right">
+    <a href="/">Recepti</a>
+  </div>
+  </div>
+
+  <h2>Popis recepata</h2>
+  
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Datum</th>
+      <th>Pacijent OIB</th>
+      <th>Zaposlenik ID</th>
+      <th>Detalji</th>
+    </tr>
+    <% recepti.forEach(recept => { %>
+      <tr>
+        <td><%= recept.recept_id %></td>
+        <td><%= new Date(recept.datum_izdavanja).toLocaleDateString() %></td>
+        <td><%= recept.pacijent_oib %></td>
+        <td><%= recept.zaposlenik_id %></td>
+        <td>
+          <a href="/recept/<%= recept.recept_id %>">Otvori</a>
+        </td>
+      </tr>
+    <% }) %>
+  </table>
+</body>

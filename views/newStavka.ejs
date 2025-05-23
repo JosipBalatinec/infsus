@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Nova stavka</title>
+  <link rel="stylesheet" href="/css/stavka.css">
+</head>
+
+<body>
+  <div class="navbar">
+  <div class="navbar-left">Apoteka</div>
+  <div class="navbar-right">
+    <a href="/">Recepti</a>
+  </div>
+  </div>
+  
+  <h2>Dodavanje nove stavke za recept #<%= receptId %></h2>
+
+  <% if (typeof error !== 'undefined') { %>
+    <div class="error-message"><%= error %></div>
+  <% } %>
+
+  <form method="POST" action="/stavka/new/<%= receptId %>">
+    <label>Proizvod:</label>
+    <select name="proizvod_id" required>
+      <% proizvodi.forEach(p => { %>
+        <option value="<%= p.proizvod_id %>"><%= p.naziv %></option>
+      <% }) %>
+    </select>
+
+    <label>Količina:</label>
+    <input type="number" name="kolicina" min="1" required />
+
+    <br/><br/>
+    <button type="submit">Spremi</button>
+    <a href="/recept/<%= receptId %>">Natrag</a>
+  </form>
+</body>

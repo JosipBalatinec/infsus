@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Uređivanje stavke</title>
+  <link rel="stylesheet" href="/css/stavka.css">
+</head>
+
+<body>
+  <div class="navbar">
+  <div class="navbar-left">Apoteka</div>
+  <div class="navbar-right">
+    <a href="/">Recepti</a>
+  </div>
+  </div>
+  
+  <h2>Uređivanje stavke recepta</h2>
+
+  <% if (typeof error !== 'undefined') { %>
+    <div class="error-message"><%= error %></div>
+  <% } %>
+
+  <form method="POST" action="/stavka/<%= stavka.stavka_id %>/edit">
+    <p>Proizvod ID: <%= stavka.proizvod_id %></p>
+    <p>Proizvod: <%= stavka.naziv%></p>
+
+    <label>Količina:</label>
+    <input type="number" name="kolicina" value="<%= stavka.kolicina %>" required min="1" />
+
+    <button type="submit">Spremi</button>
+  </form>
+
+  <br/>
+  <a href="/recept/<%= stavka.recept_id %>">Natrag</a>
+</body>
