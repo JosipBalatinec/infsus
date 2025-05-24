@@ -3,6 +3,7 @@ const app = express();
 const receptRoutes = require('./routes/receptRoutes');
 const stavkaRoutes = require('./routes/stavkaRoutes');
 const homeController = require('./controllers/homeController');
+const kategorijaRoutes = require('./routes/kategorijaRoutes');
 
 const path = require('path');
 
@@ -16,6 +17,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use('/recept', receptRoutes);
 app.use('/stavka', stavkaRoutes);
+app.use('/kategorije', kategorijaRoutes);
 
 app.get('/', homeController.showReceptiList);
 

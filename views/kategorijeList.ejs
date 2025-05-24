@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kategorije</title>
+  <link rel="stylesheet" href="/css/kategorijeList.css">
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="navbar-left">Apoteka</div>
+    <div class="navbar-right">
+      <a href="/">Recepti</a>
+      <a href="/kategorije">Kategorije</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Popis kategorija</h1>
+
+    <form method="GET" action="/kategorije/search">
+      Search: <input type="text" name="q" placeholder="Antibio">
+      <button type="submit">Search</button>
+    </form>
+
+    <a href="/kategorije/add"><button>Add New Category</button></a>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Category Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% kategorije.forEach(function(kat) { %>
+          <tr>
+            <td><%= kat.kategorija_id %></td>
+            <td><%= kat.kategorija %></td>
+            <td>
+              <a href="/kategorije/edit/<%= kat.kategorija_id %>"><button>Edit</button></a>
+              <form action="/kategorije/delete/<%= kat.kategorija_id %>" method="POST" style="display:inline;">
+                <button type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>
