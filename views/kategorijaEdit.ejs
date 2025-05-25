@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/css/kategorijeList.css">
+  <title>Uredi kategoriju</title>
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-left">Apoteka</div>
+    <div class="navbar-right">
+      <a href="/">Recepti</a>
+      <a href="/kategorije">Kategorije</a>
+    </div>
+  </div>
+
+  <h1>Uredi kategoriju</h1>
+
+  <form method="POST" action="/kategorije/edit/<%= kategorija.kategorija_id %>">
+    <label>Naziv kategorije:</label>
+    <input type="text" name="kategorija" value="<%= kategorija.kategorija %>" required>
+    <button type="submit">Spremi</button>
+    <a href="/kategorije"><button type="button">Odustani</button></a>
+  </form>
+</body>
+</html>

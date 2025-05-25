@@ -53,7 +53,7 @@ async function prevRecept(req, res) {
 async function updateRecept(req, res) {
   const id = parseInt(req.params.id);
   await receptModel.updateRecept(id, req.body);
-  res.redirect(`/recept/${id}`);
+  res.redirect(`/kategorijaEdit/${id}`);
 }
 
 //Brisanje recepta
