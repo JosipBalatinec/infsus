@@ -6,12 +6,6 @@ async function showKategorijaList(req, res) {
   res.render("kategorijeList", { kategorije });
 }
 
-async function updateKategorija(req, res) {
-  const id = parseInt(req.params.id);
-  await kategorijaModel.updateKategorija(id, req.body);
-  res.redirect(`/kategorije/update/${id}`);
-}
-
 async function deleteKategorija(req, res) {
   const id = parseInt(req.params.id);
   await kategorijaModel.deleteKategorija(id);

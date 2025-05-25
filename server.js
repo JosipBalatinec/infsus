@@ -24,7 +24,7 @@ app.get("/", homeController.showReceptiList);
 const PORT = process.env.PORT || 3000;
 
 if (require.main === module) {
-  app.listen(PORT, () => console.log(`Server running on ${PORT}`));
+  app.listen(PORT, () => console.log(`Server radi na portu ${PORT}`));
 }
 
 module.exports = app;
